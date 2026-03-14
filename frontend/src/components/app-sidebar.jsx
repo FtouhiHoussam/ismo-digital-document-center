@@ -72,7 +72,7 @@ export function AppSidebar() {
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={isActive}>
-                      <Link href={item.url} data-testid={`link-nav-${item.url.replace(/\
+                      <Link href={item.url} data-testid={`link-nav-${item.url.replace(/^\//, "")}`}>
                         <item.icon className="w-4 h-4" />
                         <span>{item.title}</span>
                       </Link>

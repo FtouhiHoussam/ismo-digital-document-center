@@ -27,7 +27,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http:
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
@@ -80,7 +80,7 @@ const PORT = parseInt(process.env.PORT || "5000", 10);
 
 connectDB().then(() => {
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`🚀  Backend running on http:
+    console.log(`🚀  Backend running on http://localhost:${PORT}`);
   });
 });
 
