@@ -69,11 +69,12 @@ npm run dev
 
 ---
 
-## 🔐 Identifiants par défaut (Admin)
+## 🔐 Identifiants par défaut (Test)
 
 | Rôle | Email | Mot de passe |
 | :--- | :--- | :--- |
 | Administrateur | `admin@ismo.ma` | `adminpassword` |
+| Étudiant (Exemple) | `2001102300461@ofppt-edu.ma` | `student123` |
 
 ---
 
