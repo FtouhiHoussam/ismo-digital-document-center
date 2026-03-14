@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+.env
+uploads/justificatifs/*
+uploads/documents/*
+!uploads/justificatifs/.gitkeep
+!uploads/documents/.gitkeep
+README.md
