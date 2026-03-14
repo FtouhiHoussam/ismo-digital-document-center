@@ -31,7 +31,7 @@ export function NotificationsProvider({ children }) {
   useEffect(() => {
     fetchNotifications();
     if (user) {
-      const interval = setInterval(fetchNotifications, 30000); // 30 seconds polling
+      const interval = setInterval(fetchNotifications, 30000);
       return () => clearInterval(interval);
     }
   }, [fetchNotifications, user]);

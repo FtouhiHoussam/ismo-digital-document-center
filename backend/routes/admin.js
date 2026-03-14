@@ -34,10 +34,10 @@ const documentUpload = multer({
 
 const router = express.Router();
 
-// All admin routes require auth + admin role
+
 router.use(authMiddleware, adminMiddleware);
 
-// GET /api/admin/demandes  — all requests with user info
+
 router.get("/demandes", async (_req, res) => {
   try {
     const demandes = await Demande.find()
@@ -46,7 +46,7 @@ router.get("/demandes", async (_req, res) => {
 
     const result = demandes.map((d) => {
       const obj = d.toJSON();
-      obj.user = obj.userId || undefined; // populated user lands here
+      obj.user = obj.userId || undefined;
       obj.userId = d.userId?._id?.toString() ?? d.userId?.toString();
       return obj;
     });
@@ -57,7 +57,7 @@ router.get("/demandes", async (_req, res) => {
   }
 });
 
-// GET /api/admin/demandes/:id
+
 router.get("/demandes/:id", async (req, res) => {
   try {
     const demande = await Demande.findById(req.params.id).populate(
@@ -75,7 +75,7 @@ router.get("/demandes/:id", async (req, res) => {
   }
 });
 
-// PUT /api/admin/demandes/:id  — update status / admin comment
+
 router.put("/demandes/:id", async (req, res) => {
   try {
     const { statut, commentaireAdmin } = req.body;
@@ -142,7 +142,7 @@ router.put("/demandes/:id", async (req, res) => {
   }
 });
 
-// POST /api/admin/demandes/:id/document  — upload final document
+
 router.post("/demandes/:id/document", documentUpload.single("document"), async (req, res) => {
   try {
     const file = req.file;
@@ -168,7 +168,7 @@ router.post("/demandes/:id/document", documentUpload.single("document"), async (
   }
 });
 
-// GET /api/admin/statistiques
+
 router.get("/statistiques", async (_req, res) => {
   try {
     const allDemandes = await Demande.find();
@@ -178,7 +178,7 @@ router.get("/statistiques", async (_req, res) => {
     let totalProcessingDays = 0;
     let processedCount = 0;
 
-    // Time-series for the last 30 days
+   
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
     const activityTrend = {};
@@ -226,7 +226,7 @@ router.get("/statistiques", async (_req, res) => {
   }
 });
 
-// GET /api/admin/activity
+
 router.get("/activity", async (_req, res) => {
   try {
     const logs = await ActivityLog.find()
@@ -239,7 +239,7 @@ router.get("/activity", async (_req, res) => {
   }
 });
 
-// GET /api/admin/students
+
 router.get("/students", async (_req, res) => {
   try {
     const students = await User.find({ role: "student" })
@@ -251,7 +251,7 @@ router.get("/students", async (_req, res) => {
   }
 });
 
-// POST /api/admin/students  — admin creates student account
+
 router.post("/students", async (req, res) => {
   try {
     const parsed = addStudentSchema.safeParse(req.body);
@@ -285,7 +285,7 @@ router.post("/students", async (req, res) => {
     });
 
     try {
-      const currentPassword = parsed.data.password; // Plain password sent by admin
+      const currentPassword = parsed.data.password;
       const emailSubject = `Bienvenue sur ISMO Digital - Vos informations de connexion`;
       const emailHtml = `
         <div style="font-family: sans-serif; color: #333;">
@@ -313,7 +313,7 @@ router.post("/students", async (req, res) => {
   }
 });
 
-// DELETE /api/admin/students/:id
+
 router.delete("/students/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -323,7 +323,7 @@ router.delete("/students/:id", async (req, res) => {
     if (user.role === "admin") {
       return res.status(403).json({ message: "Impossible de supprimer un administrateur" });
     }
-    // Cascade: delete user's requests first
+   
     await Demande.deleteMany({ userId: req.params.id });
     await User.findByIdAndDelete(req.params.id);
 
@@ -339,7 +339,7 @@ router.delete("/students/:id", async (req, res) => {
   }
 });
 
-// MESSAGES (ADMIN)
+
 router.get("/demandes/:id/messages", async (req, res) => {
   try {
     const messages = await Message.find({ demandeId: req.params.id })
@@ -363,7 +363,7 @@ router.post("/demandes/:id/messages", async (req, res) => {
       isFromAdmin: true,
     });
 
-    // Notify student about admin message
+   
     const demande = await Demande.findById(req.params.id);
     if (demande) {
       await Notification.create({
@@ -380,7 +380,7 @@ router.post("/demandes/:id/messages", async (req, res) => {
   }
 });
 
-// ANNOUNCEMENTS (ADMIN CRUD)
+
 router.get("/announcements", async (_req, res) => {
   try {
     const announcements = await Announcement.find()

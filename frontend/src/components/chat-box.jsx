@@ -23,7 +23,7 @@ export function ChatBox({ demandeId, isAdmin = false }) {
   const { data: messages, isLoading } = useQuery({
     queryKey: [endpointUrl],
     enabled: !!demandeId,
-    refetchInterval: 10000, // Poll every 10s for new messages
+    refetchInterval: 10000,
   });
 
   const mutation = useMutation({

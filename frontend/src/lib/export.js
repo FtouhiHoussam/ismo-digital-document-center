@@ -5,13 +5,13 @@ export function exportToCSV(filename, rows) {
   const keys = Object.keys(rows[0]);
 
   const csvContent = [
-    // Header row
+   
     keys.join(separator),
-    // Data rows
+   
     ...rows.map(row => {
       return keys.map(k => {
         let cell = row[k] === null || row[k] === undefined ? "" : String(row[k]);
-        // Escape quotes and wrap in quotes if contains separator, newline or quotes
+       
         if (cell.includes(separator) || cell.includes("\n") || cell.includes("\"")) {
           cell = `"${cell.replace(/"/g, '""')}"`;
         }

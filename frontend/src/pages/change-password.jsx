@@ -54,7 +54,7 @@ export default function ChangePasswordPage() {
         description: "Vous allez être redirigé vers votre espace.",
       });
 
-      // Update user state → App.jsx guard will lift automatically
+     
       await refreshUser();
     } catch (err) {
       toast({
@@ -69,7 +69,7 @@ export default function ChangePasswordPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left panel */}
+      {}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a2744] via-[#1e3a5f] to-[#243b6e]" />
         <div className="relative z-10 flex flex-col justify-between p-10 text-white w-full">
@@ -100,10 +100,10 @@ export default function ChangePasswordPage() {
         </div>
       </div>
 
-      {/* Right panel — form */}
+      {}
       <div className="flex-1 flex items-center justify-center p-6 bg-background">
         <div className="w-full max-w-sm space-y-6">
-          {/* Mobile header */}
+          {}
           <div className="text-center space-y-2 lg:hidden">
             <div className="mx-auto w-12 h-12 bg-[#1a2744] rounded-md flex items-center justify-center">
               <FileText className="w-6 h-6 text-[#FCCE2D]" />
@@ -185,7 +185,7 @@ export default function ChangePasswordPage() {
 
 function SpinIcon({ className }) {
   return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <svg className={className} xmlns="http:
       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
     </svg>

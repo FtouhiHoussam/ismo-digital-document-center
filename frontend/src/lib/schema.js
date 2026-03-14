@@ -1,6 +1,3 @@
-// Shared constants used by the frontend.
-// Keep in sync with backend/config/schemas.js
-
 import { z } from "zod";
 
 export const REQUEST_TYPES = [
@@ -28,7 +25,7 @@ export const STATUS_LABELS = {
   rejete: "Refusé",
 };
 
-// ── Zod schemas (form validation on the client side) ──────────────────────
+
 
 export const registerSchema = z.object({
   email: z.string().email("Email invalide"),

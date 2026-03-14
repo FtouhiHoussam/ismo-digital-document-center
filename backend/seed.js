@@ -17,7 +17,7 @@ async function seedDatabase() {
 
   console.log("🌱 Seeding database...");
 
-  // Admin
+ 
   const admin = await User.create({
     email: "admin@ismo.ma",
     password: await hashPassword("admin123"),
@@ -27,7 +27,7 @@ async function seedDatabase() {
     telephone: "+212 661 000 001",
   });
 
-  // Students
+ 
   const studentPassword = await hashPassword("student123");
 
   const student1 = await User.create({
@@ -60,7 +60,7 @@ async function seedDatabase() {
     telephone: "+212 600 555 666",
   });
 
-  // Demandes
+ 
   await Demande.create({
     userId: student1._id,
     type: "certificat_scolarite",

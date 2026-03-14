@@ -34,7 +34,7 @@ const justificatifsUpload = multer({
 
 const router = express.Router();
 
-// GET /api/demandes  — student's own requests
+
 router.get("/", authMiddleware, async (req, res) => {
   try {
     const demandes = await Demande.find({ userId: req.userId })
@@ -45,7 +45,7 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
-// POST /api/demandes  — create new request
+
 router.post(
   "/",
   authMiddleware,
@@ -86,7 +86,7 @@ router.post(
   }
 );
 
-// GET /api/demandes/:id
+
 router.get("/:id", authMiddleware, async (req, res) => {
   try {
     const demande = await Demande.findById(req.params.id);
@@ -105,7 +105,7 @@ router.get("/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// GET /api/demandes/active-announcements
+
 router.get("/announcements/active", authMiddleware, async (_req, res) => {
   try {
     const announcements = await Announcement.find({ active: true })
@@ -117,7 +117,7 @@ router.get("/announcements/active", authMiddleware, async (_req, res) => {
   }
 });
 
-// GET /api/demandes/:id/messages
+
 router.get("/:id/messages", authMiddleware, async (req, res) => {
   try {
     const demande = await Demande.findById(req.params.id);
@@ -135,7 +135,7 @@ router.get("/:id/messages", authMiddleware, async (req, res) => {
   }
 });
 
-// POST /api/demandes/:id/messages
+
 router.post("/:id/messages", authMiddleware, async (req, res) => {
   try {
     const { text } = req.body;

@@ -4,10 +4,10 @@ import { authMiddleware } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// All notification routes require authentication
+
 router.use(authMiddleware);
 
-// GET /api/notifications — get current user's notifications (last 20)
+
 router.get("/", async (req, res) => {
   try {
     const notifications = await Notification.find({ userId: req.userId })
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// PUT /api/notifications/read-all — mark all as read
+
 router.put("/read-all", async (req, res) => {
   try {
     await Notification.updateMany({ userId: req.userId, read: false }, { read: true });
@@ -29,7 +29,7 @@ router.put("/read-all", async (req, res) => {
   }
 });
 
-// PUT /api/notifications/:id/read — mark one as read
+
 router.put("/:id/read", async (req, res) => {
   try {
     const notification = await Notification.findOneAndUpdate(

@@ -14,18 +14,18 @@ export default defineConfig({
     },
   },
 
-  // Proxy /api and /uploads requests to the Express backend during development.
-  // This means the frontend code never needs to hardcode a backend URL —
-  // all fetch("/api/...") calls just work in both dev and production.
+ 
+ 
+ 
   server: {
     port: 5173,
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "http:
         changeOrigin: true,
       },
       "/uploads": {
-        target: "http://localhost:5000",
+        target: "http:
         changeOrigin: true,
       },
     },

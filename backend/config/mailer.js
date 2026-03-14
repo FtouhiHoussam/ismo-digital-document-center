@@ -1,8 +1,8 @@
 import nodemailer from "nodemailer";
 
-// Using Ethereal Email for testing purposes.
-// This is a fake SMTP service. You can see the emails on ethereal.email.
-// To use a real email (like Gmail), replace these credentials with an app password.
+
+
+
 export const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 587,
@@ -24,6 +24,6 @@ export const sendEmail = async (to, subject, html) => {
     return info;
   } catch (error) {
     console.error("Error sending email:", error);
-    // Don't throw, we don't want to crash the app if email fails
+   
   }
 };

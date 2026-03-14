@@ -11,7 +11,7 @@ import { loginSchema, registerSchema } from "../config/schemas.js";
 
 const router = express.Router();
 
-// POST /api/auth/login
+
 router.post("/login", async (req, res) => {
   try {
     const parsed = loginSchema.safeParse(req.body);
@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// GET /api/auth/me
+
 router.get("/me", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password");
@@ -57,7 +57,7 @@ router.get("/me", authMiddleware, async (req, res) => {
   }
 });
 
-// POST /api/auth/change-password
+
 router.post("/change-password", authMiddleware, async (req, res) => {
   try {
     const { newPassword } = req.body;
@@ -77,7 +77,7 @@ router.post("/change-password", authMiddleware, async (req, res) => {
   }
 });
 
-// PUT /api/auth/profile
+
 router.put("/profile", authMiddleware, async (req, res) => {
   try {
     const { nom, prenom, telephone } = req.body;
@@ -93,7 +93,7 @@ router.put("/profile", authMiddleware, async (req, res) => {
   }
 });
 
-// POST /api/auth/logout
+
 router.post("/logout", (_req, res) => {
   res.clearCookie("token");
   res.json({ message: "Déconnexion réussie" });
