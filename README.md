@@ -1,56 +1,80 @@
-# ISMO Digital — Code Companion
+# ISMO Digital — Centre de Documents Administratifs 🎓📄
 
-Student document request portal for ISMO Tetouan.  
-Built with **Express + MongoDB** (backend) and **React + Vite** (frontend).
+Plateforme digitale de gestion et de suivi des documents administratifs pour les stagiaires et les administrateurs de l'Institut Spécialisé dans les Métiers de l'Offshoring (ISMO) Tétouan - OFPPT.
+
+Ce projet a été développé de A à Z avec la stack **MERN** (MongoDB, Express, React, Node.js) pour répondre aux besoins de digitalisation de l'administration.
 
 ---
 
-## Quick start
+## 🚀 Fonctionnalités Principales
 
-### Prerequisites
-- Node.js 18+
-- MongoDB 6+ running locally **or** a MongoDB Atlas connection string
+### Pour les Stagiaires 👨‍🎓
+- **Tableau de bord interactif** : Suivi en temps réel de l'état des demandes.
+- **Demande de documents en ligne** : Attestations de scolarité, relevés de notes, etc.
+- **Upload de Fichiers** : Possibilité de joindre plusieurs justificatifs (Images/PDF) à la demande.
+- **Messagerie Intégrée** : Communication directe avec l'administration via un espace de chat par demande.
+- **Notifications & Annonces** : Réception des annonces officielles de l'administration.
 
-### 1 — Backend
+### Pour l'Administration 👨‍💼
+- **Gestion des demandes** : Validation, rejet, et traitement des demandes avec commentaires.
+- **Statistiques & Graphiques** : Visualisation de l'activité des 30 derniers jours via des graphiques interactifs.
+- **Gestion des Stagiaires** : Ajout, modification, et suppression des comptes étudiants.
+- **Exportation de Données** : Bouton d'exportation des listes (Demandes et Stagiaires) au format **CSV / Excel**.
+- **Envoi d'Emails (Nodemailer)** : Envoi automatique d'emails lors de la création d'un compte ou du changement de statut d'une demande.
+- **Tableau d'affichage (Annonces)** : Création et diffusion de notes d'information publiques.
+
+---
+
+## 🛠️ Stack Technique (Technologies Utilisées)
+
+### Frontend (Interface Utilisateur)
+- **React 18** avec **Vite** (Rapidité et performance)
+- **Tailwind CSS** & **Shadcn UI** (Design moderne et épuré)
+- **React Query** (Gestion d'état et mise en cache des APIs)
+- **Recharts** (Visualisation de données)
+- **Wouter** (Routing léger)
+
+### Backend (Serveur & API)
+- **Node.js** & **Express.js** (Architecture REST API)
+- **MongoDB** & **Mongoose** (Base de données NoSQL)
+- **JWT (JSON Web Tokens)** & **Bcryptjs** (Authentification et sécurité)
+- **Multer** (Gestion des uploads de fichiers)
+- **Nodemailer** (Intégration d'emails SMTP)
+
+---
+
+## ⚙️ Installation Globale (Local)
+
+### Prérequis
+- Node.js (v18+)
+- MongoDB (installé localement ou via Atlas)
+
+### 1️⃣ Lancement du Serveur (Backend)
 
 ```bash
 cd backend
 npm install
-cp .env.example .env          # then edit MONGODB_URI & JWT_SECRET
-npm run seed                   # load demo data (run once)
-npm run dev                    # API on http://localhost:5000
+npm run dev
 ```
+> **Note :** Le serveur API se lance sur `http://localhost:5000`. Assurez-vous de paramétrer le fichier `.env` avec `MONGO_URI` et `JWT_SECRET`.
 
-### 2 — Frontend
+### 2️⃣ Lancement de l'Application (Frontend)
 
 ```bash
 cd frontend
 npm install
-npm run dev                    # UI on http://localhost:5173
+npm run dev
 ```
-
-Open **http://localhost:5173** in your browser.
+> **Note :** L'interface sera accessible sur `http://localhost:5173`.
 
 ---
 
-## Demo accounts (after seed)
+## 🔐 Identifiants par défaut (Admin)
 
-| Role    | Email                          | Password   |
-| ------- | ------------------------------ | ---------- |
-| Admin   | admin@ismo.ma                  | admin123   |
-| Student | 2001102300461@ofppt-edu.ma     | student123 |
+| Rôle | Email | Mot de passe |
+| :--- | :--- | :--- |
+| Administrateur | `admin@ismo.ma` | `adminpassword` |
 
 ---
 
-## Architecture
-
-```
-project/
-├── backend/    Express REST API — MongoDB/Mongoose — JWT auth — Multer uploads
-└── frontend/   React 18 SPA — Vite — TailwindCSS — shadcn/ui — TanStack Query
-```
-
-Both services are fully independent.  
-In development, Vite proxies `/api/*` and `/uploads/*` to the backend at `:5000` so there are no CORS issues and no hardcoded URLs in the frontend code.
-
-See [`backend/README.md`](./backend/README.md) and [`frontend/README.md`](./frontend/README.md) for full details.
+> Projet réalisé dans le cadre de la digitalisation des processus administratifs de l'ISMO OFPPT.
