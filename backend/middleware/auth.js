@@ -1,7 +1,11 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-const JWT_SECRET = process.env.JWT_SECRET || "ismo-digital-secret-key-2024";
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  console.error("FATAL: JWT_SECRET is not defined in environment variables!");
+}
 
 export function hashPassword(password) {
   return bcrypt.hash(password, 10);
