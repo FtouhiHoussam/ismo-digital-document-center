@@ -1,4 +1,4 @@
-# ISMO Digital — Frontend
+# ISMO Digital — Frontend Project
 
 React 18 SPA for the ISMO Digital Document Center.
 

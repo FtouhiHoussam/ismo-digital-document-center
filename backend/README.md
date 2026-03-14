@@ -1,4 +1,4 @@
-# ISMO Digital — Backend
+# ISMO Digital — Backend Project
 
 Express.js REST API backed by **MongoDB + Mongoose**.
 
@@ -62,7 +62,7 @@ npm start
 
 | Variable      | Description                                     | Default                      |
 | ------------- | ----------------------------------------------- | ---------------------------- |
-| `MONGODB_URI` | MongoDB connection string                       | `mongodb://localhost:27017/code-companion` |
+| `MONGODB_URI` | MongoDB connection string                       | `mongodb://localhost:27017/ismo-digital` |
 | `JWT_SECRET`  | Secret used to sign JWT tokens                  | insecure default (change!)   |
 | `PORT`        | HTTP port                                       | `5000`                       |
 | `CLIENT_URL`  | Allowed CORS origin (your frontend URL)         | `http://localhost:5173`      |
